@@ -4,7 +4,6 @@ import (
   "fmt"
   "log"
   "github.com/CaitieM20/GoBase/fizzbuzz"
-  "strconv"
   "os"
 )
 
@@ -13,38 +12,30 @@ func main() {
   if len(os.Args) <= 1 {
     log.Fatal("Requires at least one integer as input")
   }
+  
+  handler := fizzbuzz.NewHandler(
+    &cache{
+      dict: make(map[int]string),
+  })
 
-  nums, err := ConvertInput(os.Args[1:])
-
+  nums, err := handler.RunFizzBuzz(os.Args[1:])
   if err != nil {
     log.Fatal("Input must be an integer", err)
   }
 
-  fmt.Println(FizzBuzz(nums))
+  fmt.Println(nums)
 }
 
-func ConvertInput(args []string) ([]int, error) {
-  var rsp []int
-
-  for _, str := range args {
-    num, err := strconv.Atoi(str)
-
-    if err != nil {
-      return nil, err
-    }
-
-    rsp = append(rsp, num)
-  }
-  
-  return rsp, nil 
+type cache struct {
+  dict map[int]string
 }
 
-func FizzBuzz(input []int) []string {
-  var rsp []string 
-
-  for _, num := range input {
-    rsp = append(rsp, fizzbuzz.FizzBuzz(num))
-  }
-
-  return rsp
+func (c *cache) Put(key int, value string){
+  c.dict[key] = value
 }
+
+func (c *cache) Get(key int) (string, bool) {
+  str, ok := c.dict[key]
+  return str, ok
+}
+

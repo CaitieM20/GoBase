@@ -15,7 +15,7 @@ func Test_ValidateFizzBuzz(t *testing.T) {
   properties.Property("FizzBuzz Returns Correct String", prop.ForAll(
     func(num int) bool {
 
-      str := FizzBuzz(num)
+      str := fizzBuzz(num)
 
       switch str {
       case "Fizz":

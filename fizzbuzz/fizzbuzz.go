@@ -4,7 +4,7 @@ import (
   "strconv"
 )
 
-func FizzBuzz(num int) string {
+func fizzBuzz(num int) string {
 
   div3 := (num % 3) == 0
   div5 := (num % 5) == 0
