@@ -1,0 +1,22 @@
+codecov:
+  branch: master
+  bot: null
+
+coverage:
+  status:
+    project:
+      default: #status context
+        target: auto
+        threshold: null
+  patch:
+    default:
+      target: auto
+      threshold: null
+    changes:
+      default:
+        target:auto
+
+comment:
+  layout: "header, diff, changes, sunburst, uncovered, tree"
+  branches: null
+  behavior: default
