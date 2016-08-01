@@ -1,4 +1,4 @@
-package main
+package fizzbuzz
 
 import (
   "github.com/leanovate/gopter"
@@ -15,7 +15,7 @@ func Test_ValidateFizzBuzz(t *testing.T) {
   properties.Property("FizzBuzz Returns Correct String", prop.ForAll(
     func(num int) bool {
 
-      str := fizzBuzz(num)
+      str := FizzBuzz(num)
 
       switch str {
       case "Fizz":
