@@ -13,11 +13,7 @@ func main() {
     log.Fatal("Requires at least one integer as input")
   }
   
-  handler := fizzbuzz.NewHandler(
-    &cache{
-      dict: make(map[int]string),
-  })
-
+  handler := fizzbuzz.NewHandler(fizzbuzz.NewInMemoryCache())
   nums, err := handler.RunFizzBuzz(os.Args[1:])
   if err != nil {
     log.Fatal("Input must be an integer", err)
