@@ -1,6 +1,7 @@
 package fizzbuzz
 
 import (
+  "strconv"
   "github.com/leanovate/gopter"
   "github.com/leanovate/gopter/gen"
   "github.com/leanovate/gopter/prop"
@@ -25,9 +26,9 @@ func Test_ValidateFizzBuzz(t *testing.T) {
       case "FizzBuzz":
         return (num % 3 == 0) && (num % 5 == 0)
       default:
-        return !(num % 3 == 0) && !(num % 5 == 0)
+        expectedStr := strconv.Itoa(num)
+        return !(num % 3 == 0) && !(num % 5 == 0) && expectedStr == str
       }
-
     },
     gen.Int(),
   ))
